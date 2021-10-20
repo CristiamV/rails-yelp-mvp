@@ -1,0 +1,16 @@
+<div class = "container">
+    <h1> Restaurant details <h1>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h2 class="card-title"><%=@restaurant.name%></h2>
+            <h4 class="card-text">Address: <%= @restaurant.address%></h4>
+            <h4 class="card-text">Phone Number: <%= @restaurant.phone_number%></h4>
+            <h4 class="card-text">Category: <%= @restaurant.category%></h4>
+            <div class = "d-flex justify-content-between">
+                <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant), class: "btn btn-primary mr-4" %>
+                <a href="#" class="btn btn-secondary">Add a review</a>        
+            </div>            
+        </div>
+    </div>    
+   <h3> <%= link_to "Back to list", restaurants_path %> </h3>
+</div>
