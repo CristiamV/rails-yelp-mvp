@@ -1,12 +1,10 @@
 <div class = "container">
     <h1> My Restaurants </h1>
-    <% @restaurants.each do |restaurant|%>
-        <div class = "d-flex">
-            <input type="checkbox" id="restaurant" name="restaurant1" value="restaurant1">
-            <label for="restaurant" class = "ml-1"> <%= link_to restaurant.name, restaurant_path(restaurant)%></label>
-            <%= link_to "Delete", restaurant_path(restaurant), method: :delete, data: {confirm: "Estas seguro?"}, class:"ml-3" %>
-        </div>     
-    <%end%>           
+    <ol> 
+    <% @restaurants.each do |restaurant|%>                   
+        <li><%= link_to restaurant.name, restaurant_path(restaurant)%></li>            
+    <%end%>
+    </ol>            
     <hr>
     <%= link_to 'Add a new restaurant', new_restaurant_path %>
 </div>

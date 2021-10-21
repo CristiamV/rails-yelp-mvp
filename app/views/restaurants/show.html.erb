@@ -1,16 +1,27 @@
 <div class = "container">
     <h1> Restaurant details <h1>
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 25rem;">
         <div class="card-body">
-            <h2 class="card-title"><%=@restaurant.name%></h2>
+            <h2 class="card-title text-center"><%=@restaurant.name%></h2>
             <h4 class="card-text">Address: <%= @restaurant.address%></h4>
             <h4 class="card-text">Phone Number: <%= @restaurant.phone_number%></h4>
             <h4 class="card-text">Category: <%= @restaurant.category%></h4>
             <div class = "d-flex justify-content-between">
                 <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant), class: "btn btn-primary mr-4" %>
-                <a href="#" class="btn btn-secondary">Add a review</a>        
+                <%= link_to "Add a review", new_restaurant_review_path(@restaurant), class: "btn btn-secondary mr-4" %>        
+                <%= link_to "Delete", restaurant_path(@restaurant), method: :delete, data: {confirm: "Estas seguro?"}, class:"btn btn-danger" %>
             </div>            
         </div>
-    </div>    
-   <h3> <%= link_to "Back to list", restaurants_path %> </h3>
+    </div>
+    <ul>
+        <% if @restaurant.reviews.count.positive?  %>
+            <% @restaurant.reviews.each do |review|  %>
+                <li><h3><%= review.content %> | <%= review.rating %></h3></li>
+            <% end  %>
+        <% else %>
+            <li><h3>El Restaurante aun no tiene reseñas</h3></li>
+        <% end %>
+    </ul>
+    <br>
+   <h3> <%= link_to "Back to restaurant list", restaurants_path %> </h3>
 </div>
